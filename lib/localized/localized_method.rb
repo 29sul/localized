@@ -1,4 +1,4 @@
-module ActsWithLocation
+module Localized
   class LocalizedMethod
     def initialize(method_name, type)
       @method_name = method_name
@@ -23,6 +23,8 @@ module ActsWithLocation
         I18n::DateParser
       when :datetime, :timestamp, :time
         I18n::TimeParser
+      when :float_time
+        I18n::FloatTimeParser
       when ::Module
         @type
       end

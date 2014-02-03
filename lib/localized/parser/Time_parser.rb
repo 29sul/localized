@@ -1,4 +1,4 @@
-module ActsWithLocation
+module Localized
   module Parser
     module TimeParser
       include DateParser

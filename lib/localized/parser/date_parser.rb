@@ -1,4 +1,4 @@
-module ActsWithLocation
+module Localized
   module Parser
     module DateParser
       extend self
@@ -10,8 +10,6 @@ module ActsWithLocation
 
         if parsed_value
           build_object parsed_value
-        else
-          value
         end
       end
 
@@ -42,7 +40,7 @@ module ActsWithLocation
       end
 
       def valid_for_parsing?(value)
-        !valid_for_localization? value
+        !(valid_for_localization? value or value.nil?)
       end
     end
   end

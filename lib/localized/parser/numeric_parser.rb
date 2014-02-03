@@ -1,13 +1,13 @@
-module ActsWithLocation
+module Localized
   module Parser
     module NumericParser
       extend self
 
       def parse(value)
-        if valid_for_parsing?(value)
+        return value if valid_for_localization? value
+
+        if valid_for_parsing? value
           value.gsub(delimiter, '_').gsub(separator, '.').to_f
-        else
-          value
         end
       end
 

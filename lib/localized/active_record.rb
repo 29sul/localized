@@ -1,9 +1,9 @@
-module ActsWithLocation
+module Localized
   module ActiveRecord
     extend ActiveSupport::Concern
 
     module ClassMethods
-      def acts_with_location(options = {})
+      def localized(options = {})
         options.reverse_merge! methods: {}
 
         mattr_accessor :localized_methods
@@ -11,7 +11,7 @@ module ActsWithLocation
 
         columns.each do |column|
           if [ :date, :time, :datetime, :timestamp, :float, :decimal ].include? column.type
-            options[:methods][column.name] ||= column.type
+            options[:methods][column.name.to_sym] ||= column.type
           end
         end
 

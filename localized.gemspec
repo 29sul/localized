@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'acts_with_location/version'
+require 'localized/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "acts_with_location"
-  spec.version       = ActsWithLocation::VERSION
+  spec.name          = "localized"
+  spec.version       = Localized::VERSION
   spec.authors       = ["Elton Luis Kolling"]
   spec.email         = ["elton@29sul.com.br"]
   spec.description   = %q{TODO: Write a gem description}
