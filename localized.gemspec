@@ -6,11 +6,11 @@ require 'localized/version'
 Gem::Specification.new do |spec|
   spec.name          = "localized"
   spec.version       = Localized::VERSION
-  spec.authors       = ["Elton Luis Kolling"]
-  spec.email         = ["elton@29sul.com.br"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.authors       = ["29sul"]
+  spec.email         = ["contato@29sul.com.br"]
+  spec.description   = %q{Gem for localization of attributes from ActiveRecord}
+  spec.summary       = %q{Gem for localization of attributes from ActiveRecord}
+  spec.homepage      = "http://29sul.com.br"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
