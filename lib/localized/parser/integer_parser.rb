@@ -5,6 +5,10 @@ module Localized
       extend self
 
       private
+      def build_object(value)
+        value.gsub(delimiter, '_').gsub(separator, '.').to_i
+      end
+
       def precision
         0
       end

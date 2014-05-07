@@ -7,7 +7,7 @@ module Localized
         return value if valid_for_localization? value
 
         if valid_for_parsing? value
-          value.gsub(delimiter, '_').gsub(separator, '.').to_f
+          build_object value
         end
       end
 
@@ -20,6 +20,10 @@ module Localized
       end
 
       private
+
+      def build_object(value)
+        value.gsub(delimiter, '_').gsub(separator, '.').to_f
+      end
 
       def delimiter
         translate :delimiter
