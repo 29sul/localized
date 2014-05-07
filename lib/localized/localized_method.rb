@@ -17,6 +17,8 @@ module Localized
 
     def detect_parser
       case @type
+      when :integer
+        I18n::IntegerParser
       when :float, :decimal
         I18n::NumericParser
       when :date
