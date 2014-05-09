@@ -10,6 +10,7 @@ script: 'bundle exec rake'
 notifications:
   email:
     recipients:
-      - eltonlk@gmail.com
-    on_failure: change
-    on_success: never
+      - felipe@29sul.com.br
+      - elton@29sul.com.br
+    on_failure: change # [always|never|change]
+    on_success: change # [always|never|change]
