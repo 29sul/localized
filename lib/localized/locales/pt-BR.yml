@@ -1,0 +1,17 @@
+pt-BR:
+  localized:
+    date:
+    - '%d/%m/%Y'
+    - '%d-%m-%Y'
+    - '%d/%m/%y'
+    - '%d-%m-%y'
+    - '%d/%m'
+    - '%d-%m'
+
+    time:
+    - '%d/%m/%Y %H:%M:%S'
+    - '%d-%m-%Y %H:%M:%S'
+    - '%d/%m/%Y %H:%M'
+    - '%d-%m-%Y %H:%M'
+    - '%H:%M:%S'
+    - '%H:%M'

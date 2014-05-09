@@ -1,3 +1,5 @@
+require "i18n"
+require "active_record"
 require "localized/version"
 
 module Localized
