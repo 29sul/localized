@@ -19,7 +19,7 @@ describe Localized::Parser::TimeParser do
     end
 
     describe '#localize' do
-      it { subject.localize(Time.new(2010, 10, 25, 1, 33)).should eq 'Mon, 25 Oct 2010 01:33:00 -0200' }
+      it { subject.localize(Time.utc(2010, 10, 25, 1, 33)).should eq 'Mon, 25 Oct 2010 01:33:00 +0000' }
     end
   end
 
