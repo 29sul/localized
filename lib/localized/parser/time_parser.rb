@@ -7,11 +7,15 @@ module Localized
       protected
 
       def build_object(parsed_value)
-        Time.zone.local *extract_datetime(parsed_value)
+        begin
+          Time.utc *extract_datetime(parsed_value)
+        rescue
+          nil
+        end
       end
 
       def extract_datetime(parsed_value)
-        parsed_value.values_at(:year, :mon, :mday, :hour, :min, :sec).compact
+        adjust_parsed_value(parsed_value).values_at(:year, :mon, :mday, :hour, :min, :sec).compact
       end
 
       def i18n_scope

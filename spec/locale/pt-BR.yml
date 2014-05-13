@@ -1,0 +1,25 @@
+pt-BR:
+  date:
+    formats:
+      default: '%d/%m/%Y'
+      localized:
+      - '%d/%m/%Y'
+      - '%d-%m-%Y'
+      - '%d/%m/%y'
+      - '%d-%m-%y'
+      - '%d/%m'
+      - '%d-%m'
+
+  number:
+    format:
+      delimiter: '.'
+      precision: 2
+      separator: ','
+
+  time:
+    formats:
+      default: '%d/%m/%Y %H:%M'
+      localized:
+      - '%d-%m-%Y %H:%M'
+      - '%H:%M:%S'
+      - '%H:%M'

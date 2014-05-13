@@ -15,7 +15,7 @@ module Localized
         if valid_for_localization?(value)
           number_with_delimiter format("%.#{precision}f", value)
         else
-          value
+          value.to_s
         end
       end
 

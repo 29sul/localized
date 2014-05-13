@@ -6,11 +6,15 @@ module Localized
     end
 
     def read(target)
-      detect_parser.localize target.send(@method_name)
+      parser.localize target.send(@method_name)
     end
 
     def write(target, value)
-      target.send :"#{@method_name}=", detect_parser.parse(value)
+      target.send :"#{@method_name}=", parser.parse(value)
+    end
+
+    def parser
+      @parser ||= detect_parser
     end
 
     private
@@ -29,6 +33,8 @@ module Localized
         I18n::FloatTimeParser
       when ::Module
         @type
+      else
+        raise RuntimeError, "Parser not detected from type #{@type}."
       end
     end
   end

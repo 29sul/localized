@@ -6,11 +6,9 @@ module Localized
       def parse(value)
         return value unless valid_for_parsing? value
 
-        parsed_value = Date._strptime value, i18n_format
+        parsed_value = parse_value value
 
-        if parsed_value
-          build_object parsed_value
-        end
+        build_object parsed_value if parsed_value
       end
 
       def localize(value)
@@ -20,15 +18,57 @@ module Localized
       protected
 
       def build_object(parsed_value)
-        Date.new *extract_date(parsed_value)
+        begin
+          Date.new *extract_date(parsed_value)
+        rescue
+          nil
+        end
+      end
+
+      def parse_value(value)
+        i18n_formats.collect { |f| Date._strptime(value, f) }.compact.first
+      end
+
+      def adjust_parsed_value(parsed_value)
+        today = Time.now
+
+        parsed_value.reverse_merge! year: today.year, mon: today.mon, mday: today.mday, hour: today.hour, min: today.min, sec: today.sec
+        parsed_value[:year] = adjust_year_value parsed_value[:year]
+        parsed_value
+      end
+
+      def adjust_year_value(year)
+        if year > 99
+          year
+        elsif year > 30
+          century - 100 + year
+        else
+          century + year
+        end
       end
 
       def extract_date(parsed_date)
-        parsed_date.values_at(:year, :mon, :mday).compact
+        adjust_parsed_value(parsed_date).values_at(:year, :mon, :mday).compact
       end
 
-      def i18n_format
+      def century
+        current_year = Date.today.year
+
+        current_year - (current_year % 100)
+      end
+
+      def i18n_default_format
         I18n.t :default, scope: [ i18n_scope, :formats ]
+      end
+
+      def i18n_localized_formats
+        I18n.t :localized, scope: [ i18n_scope, :formats ], default: [ [] ]
+      end
+
+      def i18n_formats
+        formats = [ i18n_default_format ]
+        formats.concat i18n_localized_formats
+        formats.compact
       end
 
       def i18n_scope

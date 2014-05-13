@@ -1,5 +1,7 @@
+require "date"
 require "i18n"
 require "active_record"
+require "active_support"
 require "localized/version"
 
 module Localized

@@ -14,7 +14,7 @@ module Localized
       end
 
       def valid_for_localization?(value)
-        value.is_a? Integer
+        value.is_a? Numeric
       end
     end
   end

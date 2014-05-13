@@ -1,0 +1,25 @@
+en:
+  date:
+    formats:
+      default: '%Y-%m-%d'
+      localized:
+      - '%Y/%m/%d'
+      - '%y/%m/%d'
+      - '%y-%m-%d'
+      - '%m/%d'
+      - '%m-%d'
+
+  number:
+    format:
+      delimiter: ','
+      precision: 3
+      separator: .
+
+  time:
+    formats:
+      default: '%a, %d %b %Y %H:%M:%S %z'
+      localized:
+      - '%a, %d %b %Y %H:%M:%S'
+      - '%a, %d %b %Y %H:%M'
+      - '%H:%M:%S'
+      - '%H:%M'

@@ -1,4 +1,3 @@
-# TODO: Use the translation files!
 module Localized
   module Parser
     module FloatTimeParser
