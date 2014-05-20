@@ -45,5 +45,5 @@ describe Localized::Parser::TimeParser do
 end
 
 def time_object(year: Date.today.year, month: Date.today.mon, day: Date.today.mday, hour: Time.now.hour, min: Time.now.min, sec: Time.now.sec)
-  Time.utc year, month, day, hour, min, sec
+  Time.local year, month, day, hour, min, sec
 end
