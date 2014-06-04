@@ -16,6 +16,8 @@ describe Localized::Parser::TimeParser do
       it { subject.parse('20:54:00').should eq time_object(hour: 20, min: 54, sec: 0) }
 
       it { subject.parse('20:54').should eq time_object(hour: 20, min: 54) }
+
+      it { subject.parse('Fri, 3 Oct 20148 12:01:00 -0200').should eq nil }
     end
 
     describe '#localize' do
@@ -36,6 +38,10 @@ describe Localized::Parser::TimeParser do
       it { subject.parse('23:00:10').should eq time_object(hour: 23, min: 0, sec: 10) }
 
       it { subject.parse('23:00').should eq time_object(hour: 23, min: 00) }
+
+      it { subject.parse('7/11/20148 9:35').should eq nil }
+
+      it { subject.parse('15-7-19971 23:00').should eq nil }
     end
 
     describe '#localize' do

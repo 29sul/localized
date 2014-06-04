@@ -15,7 +15,7 @@ module Localized
       end
 
       def extract_datetime(parsed_value)
-        adjust_parsed_value(parsed_value).values_at(:year, :mon, :mday, :hour, :min, :sec).compact
+        adjust_parsed_value(parsed_value).values_at(:year, :mon, :mday, :hour, :min, :sec)
       end
 
       def i18n_scope

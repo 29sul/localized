@@ -38,7 +38,9 @@ module Localized
       end
 
       def adjust_year_value(year)
-        if year > 99
+        if year > 9999
+          nil
+        elsif year > 99
           year
         elsif year > 30
           century - 100 + year
@@ -48,7 +50,7 @@ module Localized
       end
 
       def extract_date(parsed_date)
-        adjust_parsed_value(parsed_date).values_at(:year, :mon, :mday).compact
+        adjust_parsed_value(parsed_date).values_at(:year, :mon, :mday)
       end
 
       def century

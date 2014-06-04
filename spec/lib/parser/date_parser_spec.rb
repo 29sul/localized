@@ -18,6 +18,10 @@ describe Localized::Parser::DateParser do
       it { subject.parse('10/1').should eq Date.new(Date.today.year, 10, 1) }
 
       it { subject.parse('8-27').should eq Date.new(Date.today.year, 8, 27) }
+
+      it { subject.parse('20146-04-13').should eq nil }
+
+      it { subject.parse('20120/04/20').should eq nil }
     end
 
     describe '#localize' do
@@ -42,6 +46,10 @@ describe Localized::Parser::DateParser do
       it { subject.parse('1/10').should eq Date.new(Date.today.year, 10, 1) }
 
       it { subject.parse('27-8').should eq Date.new(Date.today.year, 8, 27) }
+
+      it { subject.parse('22/01/20146').should eq nil }
+
+      it { subject.parse('17-07-20107').should eq nil }
     end
 
     describe '#localize' do
