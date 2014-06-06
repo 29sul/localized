@@ -8,7 +8,7 @@ module Localized
 
       def build_object(parsed_value)
         begin
-          Time.local *extract_datetime(parsed_value)
+          Time.zone.local *extract_datetime(parsed_value)
         rescue
           nil
         end

@@ -2,6 +2,7 @@ require "date"
 require "i18n"
 require "active_record"
 require "active_support"
+require "active_support/time_with_zone"
 require "localized/version"
 
 module Localized

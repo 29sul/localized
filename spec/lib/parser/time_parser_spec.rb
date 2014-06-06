@@ -2,7 +2,10 @@ require 'spec_helper'
 
 describe Localized::Parser::TimeParser do
   context 'en locale' do
-    before { I18n.locale = :en }
+    before do
+      I18n.locale = :en
+      Time.zone = 'UTC'
+    end
 
     describe '#parse' do
       it { subject.parse('Fri, 3 Oct 2014 12:01:00 -0200').should eq time_object(year: 2014, month: 10, day: 3, hour: 12, min: 1, sec: 0) }
@@ -26,7 +29,10 @@ describe Localized::Parser::TimeParser do
   end
 
   context 'pt-BR locale' do
-    before { I18n.locale = :'pt-BR' }
+    before do
+      I18n.locale = :'pt-BR'
+      Time.zone = 'America/Sao_Paulo'
+    end
 
     describe '#parse' do
       it { subject.parse('7/11/2014 9:35').should eq time_object(year: 2014, month: 11, day: 7, hour: 9, min: 35) }
@@ -51,5 +57,5 @@ describe Localized::Parser::TimeParser do
 end
 
 def time_object(year: Date.today.year, month: Date.today.mon, day: Date.today.mday, hour: Time.now.hour, min: Time.now.min, sec: Time.now.sec)
-  Time.local year, month, day, hour, min, sec
+  Time.zone.local year, month, day, hour, min, sec
 end
