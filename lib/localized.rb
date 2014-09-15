@@ -12,6 +12,7 @@ module Localized
     autoload :IntegerParser   , "localized/parser/integer_parser"
     autoload :NumericParser   , "localized/parser/numeric_parser"
     autoload :TimeParser      , "localized/parser/time_parser"
+    autoload :TimeShortParser , "localized/parser/time_short_parser"
   end
 
   autoload :ActiveRecord   , "localized/active_record"

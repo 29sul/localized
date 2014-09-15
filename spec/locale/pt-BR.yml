@@ -19,6 +19,7 @@ pt-BR:
   time:
     formats:
       default: '%d/%m/%Y %H:%M'
+      short: '%H:%M'
       localized:
       - '%d-%m-%Y %H:%M'
       - '%H:%M:%S'

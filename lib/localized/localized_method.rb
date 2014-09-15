@@ -29,6 +29,8 @@ module Localized
         I18n::DateParser
       when :datetime, :timestamp, :time
         I18n::TimeParser
+      when :time_short
+        I18n::TimeShortParser
       when :float_time
         I18n::FloatTimeParser
       when ::Module

@@ -12,7 +12,7 @@ module Localized
       end
 
       def localize(value)
-        valid_for_localization?(value) ? I18n.localize(value) : value
+        valid_for_localization?(value) ? I18n.localize(value, format: i18n_localize_format) : value
       end
 
       protected
@@ -75,6 +75,10 @@ module Localized
 
       def i18n_scope
         :date
+      end
+
+      def i18n_localize_format
+        :default
       end
 
       def valid_for_localization?(value)
