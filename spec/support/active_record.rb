@@ -4,5 +4,5 @@ ActiveRecord::Migration.create_table :products do |t|
   t.date    :delivery_at
   t.time    :delivery_time
 
-  t.timestamps
+  t.timestamps null: true
 end

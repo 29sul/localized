@@ -2,6 +2,9 @@ require 'spec_helper'
 
 describe Localized::Parser::FloatTimeParser do
   describe '#parse' do
+
+    it { expect(subject.parse('2015-03-19T20:54')).to eq 20.9 }
+
     it { expect(subject.parse('20:54')).to eq 20.9 }
 
     it { expect(subject.parse('1:30')).to eq 1.5 }
@@ -34,7 +37,11 @@ describe Localized::Parser::FloatTimeParser do
 
     it { expect(subject.parse('21')).to eq 21.0 }
 
+    it { expect(subject.parse(21)).to eq 21.0 }
+
     it { expect(subject.parse(7.43)).to eq 7.43 }
+
+    it { expect(subject.parse('TEXT')).to eq 0 }
   end
 
   describe '#localize' do
@@ -45,5 +52,7 @@ describe Localized::Parser::FloatTimeParser do
     it { expect(subject.localize(5.05)).to eq '5:03' }
 
     it { expect(subject.localize(0)).to eq '0:00' }
+
+    it { expect(subject.localize(1)).to eq '1:00' }
   end
 end
