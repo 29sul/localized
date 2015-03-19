@@ -13,3 +13,8 @@ I18n.default_locale = :en
 Time.zone = 'UTC'
 
 ActiveRecord::Base.establish_connection adapter: "sqlite3", database: ":memory:"
+
+
+def time_object(year: Date.today.year, month: Date.today.mon, day: Date.today.mday, hour: 0, min: 0, sec: 0)
+  Time.zone.local year, month, day, hour, min, sec
+end
