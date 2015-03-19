@@ -8,6 +8,7 @@ en:
       - '%y-%m-%d'
       - '%m/%d'
       - '%m-%d'
+      - '%a, %d %b %Y'
 
   number:
     format:
@@ -22,6 +23,5 @@ en:
       localized:
       - '%a, %d %b %Y %H:%M:%S'
       - '%a, %d %b %Y %H:%M'
-      - '%a, %d %b %Y'
       - '%H:%M:%S'
       - '%H:%M'

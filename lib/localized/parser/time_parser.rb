@@ -4,6 +4,20 @@ module Localized
       include DateParser
       extend  self
 
+      def parse(value)
+        return value unless valid_for_parsing? value
+
+        parsed_value = parse_value value
+
+        if parsed_value
+          build_object parsed_value
+        else
+          date = DateParser.parse(value)
+
+          Time.zone.local date.year, date.month, date.day unless date.nil?
+        end
+      end
+
       protected
 
       def build_object(parsed_value)
