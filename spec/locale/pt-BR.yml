@@ -22,5 +22,6 @@ pt-BR:
       short: '%H:%M'
       localized:
       - '%d-%m-%Y %H:%M'
+      - '%d-%m-%Y'
       - '%H:%M:%S'
       - '%H:%M'

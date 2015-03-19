@@ -32,7 +32,7 @@ module Localized
       def adjust_parsed_value(parsed_value)
         today = Time.now
 
-        parsed_value.reverse_merge! year: today.year, mon: today.mon, mday: today.mday, hour: today.hour, min: today.min, sec: today.sec
+        parsed_value.reverse_merge! year: today.year, mon: today.mon, mday: today.mday, hour: 0, min: 0, sec: 0
         parsed_value[:year] = adjust_year_value parsed_value[:year]
         parsed_value
       end

@@ -16,6 +16,8 @@ describe Localized::Parser::TimeParser do
 
       it { expect(subject.parse('Fri, 22 Jan 1988 20:54')).to eq time_object(year: 1988, month: 1, day: 22, hour: 20, min: 54) }
 
+      it { expect(subject.parse('Fri, 22 Jan 1988')).to eq time_object(year: 1988, month: 1, day: 22) }
+
       it { expect(subject.parse('20:54:00')).to eq time_object(hour: 20, min: 54, sec: 0) }
 
       it { expect(subject.parse('20:54')).to eq time_object(hour: 20, min: 54) }
@@ -41,6 +43,8 @@ describe Localized::Parser::TimeParser do
 
       it { expect(subject.parse('15-7-1997 23:00')).to eq time_object(year: 1997, month: 7, day: 15, hour: 23, min: 0) }
 
+      it { expect(subject.parse('15-7-1997')).to eq time_object(year: 1997, month: 7, day: 15, hour: 0, min: 0, sec: 0) }
+
       it { expect(subject.parse('23:00:10')).to eq time_object(hour: 23, min: 0, sec: 10) }
 
       it { expect(subject.parse('23:00')).to eq time_object(hour: 23, min: 00) }
@@ -56,6 +60,6 @@ describe Localized::Parser::TimeParser do
   end
 end
 
-def time_object(year: Date.today.year, month: Date.today.mon, day: Date.today.mday, hour: Time.now.hour, min: Time.now.min, sec: Time.now.sec)
+def time_object(year: Date.today.year, month: Date.today.mon, day: Date.today.mday, hour: 0, min: 0, sec: 0)
   Time.zone.local year, month, day, hour, min, sec
 end
