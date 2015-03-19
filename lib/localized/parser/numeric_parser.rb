@@ -22,7 +22,7 @@ module Localized
       private
 
       def build_object(value)
-        value.gsub(delimiter, '_').gsub(separator, '.').to_f
+        BigDecimal.new value.gsub(delimiter, '_').gsub(separator, '.')
       end
 
       def delimiter
