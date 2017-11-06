@@ -7,7 +7,7 @@ module Localized
         return value if valid_for_localization? value
 
         if valid_for_parsing? value
-          build_object value
+          value.gsub(delimiter, '_').gsub(separator, '.')
         end
       end
 
@@ -20,10 +20,6 @@ module Localized
       end
 
       private
-
-      def build_object(value)
-        BigDecimal.new value.gsub(delimiter, '_').gsub(separator, '.')
-      end
 
       def delimiter
         translate :delimiter
