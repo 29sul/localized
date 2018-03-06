@@ -7,7 +7,7 @@ module Localized
         return value if valid_for_localization? value
 
         if valid_for_parsing? value
-          value.gsub(delimiter, '_').gsub(separator, '.')
+          build_object(value)
         end
       end
 
@@ -20,38 +20,41 @@ module Localized
       end
 
       private
+        def build_object(value)
+          value.gsub(delimiter, '_').gsub(separator, '.')
+        end
 
-      def delimiter
-        translate :delimiter
-      end
+        def delimiter
+          translate :delimiter
+        end
 
-      def precision
-        translate :precision
-      end
+        def precision
+          translate :precision
+        end
 
-      def separator
-        translate :separator
-      end
+        def separator
+          translate :separator
+        end
 
-      def translate(key)
-        I18n.t key, scope: [ :number, :format ]
-      end
+        def translate(key)
+          I18n.t key, scope: [ :number, :format ]
+        end
 
-      def valid_for_localization?(value)
-        value.is_a?(Numeric) && !value.is_a?(Integer)
-      end
+        def valid_for_localization?(value)
+          value.is_a?(Numeric) && !value.is_a?(Integer)
+        end
 
-      def valid_for_parsing?(value)
-        value.respond_to? :gsub
-      end
+        def valid_for_parsing?(value)
+          value.respond_to? :gsub
+        end
 
-      # Logic extracted from Rails' number_with_delimiter helper.
-      NUMBER_WITH_DELIMITER = /(\d)(?=(\d\d\d)+(?!\d))/
-      def number_with_delimiter(number)
-        parts  = number.split('.')
-        parts[0].gsub!(NUMBER_WITH_DELIMITER, "\\1#{delimiter}")
-        parts.join(separator)
-      end
+        # Logic extracted from Rails' number_with_delimiter helper.
+        NUMBER_WITH_DELIMITER = /(\d)(?=(\d\d\d)+(?!\d))/
+        def number_with_delimiter(number)
+          parts  = number.split('.')
+          parts[0].gsub!(NUMBER_WITH_DELIMITER, "\\1#{delimiter}")
+          parts.join(separator)
+        end
     end
   end
 end
