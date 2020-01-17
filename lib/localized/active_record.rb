@@ -22,6 +22,8 @@ module Localized
       end
 
       def columns_to_localize
+        return unless table_exists?
+
         columns.each do |column|
           add_column_to_localized_methods column if locate?(column.type)
         end
